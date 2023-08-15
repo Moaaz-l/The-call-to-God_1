@@ -55,7 +55,7 @@ const createWindow = () => {
   // mainWindow.loadFile(
   //   path.join(__dirname, 'index.html')
   // );
-  mainWindow.loadURL('index.html');
+  mainWindow.loadURL('name.js');
 };
 
 // This method will be called when Electron has finished
