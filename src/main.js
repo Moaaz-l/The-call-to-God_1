@@ -96,19 +96,18 @@ app.on('activate', () => {
   }
 });
 
+const updateOptions = {
+  url: 'https://example.com/update', // عنوان URL لتحديث التطبيق
+  channel: 'stable', // قناة التحديث (اختياري)
+};
+
 app.on("ready", function(){
   autoUpdater.autoDownload = false; // للتحكم في عملية التحميل
   autoUpdater.allowDowngrade = false; // للسماح بالتنزيلات القديمة
   autoUpdater.autoInstallOnAppQuit = true; // لتثبيت التحديث عند إغلاق التطبيق
 
   // تخصيص نافذة الإعلام
-  autoUpdater.setFeedURL({
-    provider: 'github',
-    owner: 'Moaaz-l',
-    repo: 'The-call-to-God_1',
-    vPrefixedTagName: true, // لاستخدام بادئة "v" في رقم الإصدار
-    private: false // إذا كان المستودع خاصًا، قم بتعيينه على true
-  });
+  autoUpdater.setFeedURL(updateOptions);
 
   // استجابة لأحداث التحديث
   autoUpdater.on('update-available', () => {
