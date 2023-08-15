@@ -55,7 +55,7 @@ const createWindow = () => {
   // mainWindow.loadFile(
   //   path.join(__dirname, 'index.html')
   // );
-  mainWindow.loadURL('https://www.coursera.org/');
+  mainWindow.loadURL('http://localhost:3000/');
 };
 
 // This method will be called when Electron has finished
@@ -121,7 +121,7 @@ app.on("ready", function(){
       buttons: ['تحديث', 'إغلاق']
       }).then((response) => {
        if (response.response === 0) {
-         // بدء عملية التحديث هنا
+        autoUpdater.autoDownload = true; // للتحكم في عملية التحميل
        }
      });
 
