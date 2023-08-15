@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Notification , autoUpdater } = require('electron');
+const { app, BrowserWindow, ipcMain, Notification , autoUpdater , dialog } = require('electron');
 const fs = require('fs');
 const path = require('path');
 const name = "MOAAZ";
@@ -115,11 +115,24 @@ app.on("ready", function(){
     // اقتران رقم الإصدار المتاح مع تعبير خاص بك
     const version = autoUpdater.updateInfo.version;
 
+    dialog.showMessageBox({
+      type: 'info',
+      title: 'تحديث متاح',
+      message: `توجد نسخة جديدة من التطبيق (${version}) متاحة للتحميل والتثبيت.`,
+      buttons: ['تحديث', 'إغلاق']
+      }).then((response) => {
+       if (response.response === 0) {
+         // بدء عملية التحديث هنا
+       }
+     });
+
     // عرض رسالة إعلام مخصصة للمستخدم
     // يمكنك استخدام إطار عمل مثل "dialog" في Electron لإنشاء رسالة مخصصة
     // وعرضها للمستخدم
   });
 })
+
+// داخل حدث "update-available"
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
