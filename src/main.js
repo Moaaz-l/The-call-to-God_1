@@ -37,7 +37,7 @@ const createWindow = () => {
   notification.show();
 
   ipcMain.on('save-data', (event, data) => {
-    const filePath = path.join(__dirname, 'data.json');
+    const filePath = path.join(__dirname, 'data.db');
     const jsonData = JSON.stringify(data);
 
     fs.writeFile(filePath, jsonData, (err) => {
@@ -74,7 +74,7 @@ app.on('window-all-closed', () => {
 
 setInterval(restart,2000);
 function restart (){
-  fs.writeFile('data.json', JSON.stringify(data), 'utf-8', (err) => {
+  fs.writeFile('data.db', JSON.stringify(data), 'utf-8', (err) => {
     data = { "name" : name, "score": 7 };
     if (err) {
       console.error(err);
@@ -97,8 +97,8 @@ app.on('activate', () => {
 });
 
 const updateOptions = {
-  url: 'https://example.com/update', // عنوان URL لتحديث التطبيق
-  channel: 'stable', // قناة التحديث (اختياري)
+  url: 'https://github.com/Moaaz-l/The-call-to-God_1', // عنوان URL لتحديث التطبيق
+  channel: 'github', // قناة التحديث (اختياري)
 };
 
 app.on("ready", function(){
